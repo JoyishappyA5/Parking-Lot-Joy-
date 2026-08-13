@@ -1,5 +1,5 @@
 print("hello world")
-age = int(input("How old are you?"))
+age = int(input("How old are you? "))
 if age>15:
     print("You are older than me")
 elif age == 15:
