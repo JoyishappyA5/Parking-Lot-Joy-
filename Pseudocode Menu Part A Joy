@@ -1,0 +1,4 @@
+Define Menu:
+  print all the options
+  choice <- input(user's choice)
+  
