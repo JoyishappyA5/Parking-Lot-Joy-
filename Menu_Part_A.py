@@ -1,3 +1,4 @@
+#Dictionary of the bays and their state
 Bays = {
     1: {"plate": "", "occupied": False},
     2: {"plate": "", "occupied": False},
@@ -5,8 +6,11 @@ Bays = {
     4: {"plate": "", "occupied": False},
     5: {"plate": "", "occupied": False}
 }
+
+#Menu function
 def display_menu():
   loadData()
+#the different choices printed
   print("Parking Lot Tracker")
   print("1. Entering a bay")
   print("2. Leaving a bay")
@@ -27,7 +31,7 @@ def display_menu():
 
 
 
-
+#record entry option function
 def recordEntry():
   bay = int(input("Enter bay number (1-5):"))
   if bay in Bays:
@@ -38,3 +42,18 @@ def recordEntry():
       Bays[bay]["plate"] = car_plate
       Bays[bay]["occupied"] = True
       print(f"Car with plate {car_plate} has parked in bay {bay}.")
+
+#function to remove a car from a bay 
+def removeCar():
+    cp = inpuit("Enter car number plate: ")
+    for bay, details in Bays.items():
+    if details["plate"] == plate:
+        print(f"you parked your car in {bay}")
+        Bay[bay]["plate"] = ""
+        Bays[bay]["occupied"] = False
+        print("Have a lovely day! Thank you for parking in xx parking")
+    else:
+        print("we could not find your carplate in the system")
+        display_menu()
+    
+        
