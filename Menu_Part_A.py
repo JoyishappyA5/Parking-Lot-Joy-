@@ -69,3 +69,14 @@ def viewstatus():
             print(f"bay {bay} is unoccupied")
         
         
+def calculateTotals():
+    occupied_bays = 0
+    for bay in Bays:
+        if Bays[bay]["occupied"]:
+            occupied_bays += 1
+    unoccupied = 5 - occupied
+    print("Total: 5")
+    print(f"occupied: {occupied_bays}")
+    print(f"unoccupied: {unoccupied}")
+
+
