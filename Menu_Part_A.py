@@ -55,5 +55,17 @@ def removeCar():
     else:
         print("we could not find your carplate in the system")
         display_menu()
-    
+
+def viewstatus():
+    for bay in Bays:
+        if Bays[bay]["occupied"] == False:
+            print(f"bay {bay} is unoccupied")
+        elif Bays[bay]["occupied"]:
+            print(f"bay {bay} is occupied")
+    for bay in Bays:
+        if Bay[bay]["occupied"]"
+            print(f"{bay} is occupied")
+        else:
+            print(f"bay {bay} is unoccupied")
+        
         
