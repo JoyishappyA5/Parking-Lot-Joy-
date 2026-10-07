@@ -82,8 +82,8 @@ def calculateTotals():
 
 def saveData():
     with open("Carpark.txt", "w") as file:
-        for bayNum, details in Bays():
+        for bayNum, details in Bays.items():
             file.write(
-                f"{bayNum}, {details["plate"]}, {details["occupied"]}\n
+                f"{bayNum}, {details['plate']}, {details['occupied']}\n"
                 )
     
