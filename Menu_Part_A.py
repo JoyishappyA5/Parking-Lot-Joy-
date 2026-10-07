@@ -47,14 +47,14 @@ def recordEntry():
 def removeCar():
     cp = inpuit("Enter car number plate: ")
     for bay, details in Bays.items():
-    if details["plate"] == plate:
-        print(f"you parked your car in {bay}")
-        Bay[bay]["plate"] = ""
-        Bays[bay]["occupied"] = False
-        print("Have a lovely day! Thank you for parking in xx parking")
-    else:
-        print("we could not find your carplate in the system")
-        display_menu()
+        if details["plate"] == plate:
+            print(f"you parked your car in {bay}")
+            Bay[bay]["plate"] = ""
+            Bays[bay]["occupied"] = False
+            print("Have a lovely day! Thank you for parking in xx parking")
+        else:
+             print("we could not find your carplate in the system")
+             display_menu()
 
 def viewstatus():
     for bay in Bays:
@@ -63,7 +63,7 @@ def viewstatus():
         elif Bays[bay]["occupied"]:
             print(f"bay {bay} is occupied")
     for bay in Bays:
-        if Bay[bay]["occupied"]"
+        if Bay[bay]["occupied"]":
             print(f"{bay} is occupied")
         else:
             print(f"bay {bay} is unoccupied")
@@ -80,3 +80,10 @@ def calculateTotals():
     print(f"unoccupied: {unoccupied}")
 
 
+def saveData():
+    with open("Carpark.txt", "w") as file:
+        for bayNum, details in Bays():
+            file.write(
+                f"{bayNum}, {details["plate"]}, {details["occupied"]}\n
+                )
+    
