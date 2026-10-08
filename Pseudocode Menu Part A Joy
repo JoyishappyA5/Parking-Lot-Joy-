@@ -1,107 +1,115 @@
-Dictionary for the parking bays in the format:
+START
+
+INITIALISE bays in the format
   bay number: {carplate: "", occupied: False}
 
-Define Menu:
-  #print all the options
-  print("Parking Lot Tracker")
-  print("1. Entering a bay")
-  print("2. Leaving a bay")
-  print("3. View status of all bays")
-  print("4. View occupancy totals")
-  print("5. Save Data and Exit")
-  action <- int(input("Enter your choice: "))
-  choice <- input(user's choice)
-  END FUNCTION
-  #go to different choice/activate different function based on the user's choice
+FUNCTION display_menu
+  SET running to True
+  WHILE running is True
+    DISPLAY "Parking Lot Tracker"
+    DISPLAY all the options 1-5
+    action <- int(input("Enter your choice: "))
+    IF choice is 1
+            CALL recordEntry
+    ELSE IF choice is 2
+            CALL removeCar
+    ELSE IF choice is 3
+            CALL viewStatus
+    ELSE IF choice is 4
+            CALL calculateTotals
+    ELSE IF choice is 5
+            CALL saveData
+            SET running to False
+    END IF
+
+    END FUNCTION
 
 
 
 
-#record entry option function
-define recordEntry:
+FUNCTION recordEntry
   bay <- user's input bay number
-  IF bay is within range of carpark:
+  IF bay is within range of carpark
    IF the bay is occupied:
-      print("Bay is already occupied.")
-    else:
+      DISPLAY "Bay is already occupied."
+   ELSE
       car_plate <- input("Enter car number plate:")
       Bays[bay]["plate"] = car_plate
-      Bays[bay]["occupied"] = True
-      print(f"Car with plate {car_plate} has parked in bay {bay}.")
+      SET bay occupied to True
+      DISPLAY f"Car with plate {car_plate} has parked in bay {bay}."
     END IF
    END IF
 END FUNCTION
 
 
-#function to remove a car from a bay 
-define removeCar:
+
+FUNCTION removeCar
     cp <- input("Enter car number plate: ")
-    FOR bay, details in Bays.items():
-        IF details["plate"] == plate:
-            print(f"you parked your car in {bay}")
+    SET found to False
+    FOR bay, details in Bays.items()
+        IF license plate matches
+            DISPLAY f"you parked your car in {bay}"
             Bay[bay]["plate"] = ""
-            Bays[bay]["occupied"] = False
+            SET occupied to False
+            SET found to True
             print("Have a lovely day! Thank you for parking in xx parking")
-        else:
-             print("we could not find your carplate in the system")
-             display_menu()
+            break
         END IF
     END FOR
+    IF not found
+       DISPLAY"we could not find your carplate in the system"
+    END IF
 END FUNCTION
 
-define viewstatus:
-    FOR bay in Bays:
-        IF bay is not occupied:
-            print(f"bay {bay} is unoccupied")
-        ELSE:
-            print(f"bay {bay} is occupied")
+FUNCTION viewstatus
+    DISPLAY carpark heading
+    FOR each bay
+        IF occupied
+            SET status to licence plate
+        ELSE
+            SET status to "UNOCCUPIED"
         END IF
+
+        DISPLAY bay and status
     END FOR
 END FUNCTION
 
         
         
-def calculateTotals():
+FUNCTION calculateTotals():
     occupied_bays <- 0
-    FOR bay in Bays:
+    FOR each bay:
         IF bay is occupied:
-            occupied_bays += 1
+            ADD 1 to occupied_bays
         END IF
     END FOR
-    unoccupied <- 5 - occupied
-    print("Total: 5")
-    print(f"occupied: {occupied_bays}")
-    print(f"unoccupied: {unoccupied}")
+    CALCULATE unoccupied bays
+    DISPLAY totals
 END FUNCTION
 
 
-define saveData:
-    with open("Carpark.txt", "w") as file:
-        FOR bayNum, details in Bays.items():
-            file.write(
-                f"{bayNum}, {details['plate']}, {details['occupied']}\n"
-                )
+FUNCTION saveData
+    OPEN Carpark.txt for writing
+        FOR each bay
+            write bay number, carplate, occupied state
         END FOR
+    CLOSE file
 END FUNCTION
     
-def loadData():
-    try:
-        with open("Carpark.txt", "r") as file:
-            FOR line in file:
-                line <- line.strip()
-                bayNum, plate, occupied = line.split(",")
-                bayNum <- int(bayNum)
-                occupied <- occupied.strip()
-                plate <- plate.strip()
-                IF occupied is "True":
-                    occupied <- True
-                ELSE:
-                    occupied <- False
-                END IF
-                Bays[bayNum] <- {
-                    "plate": plate,
-                    "occupied": occupied}
+
+FUNCTION loadData
+    TRY open Carpark.txt for reading
+            FOR each line in file
+                SPLIT each line into baynumber, plate and occupied state
+                CONVERT data into correct data type
+                UPDATE bays
             END FOR
-    except FileNotFoundError:
-        pass
+    IF file does not exist
+            continue with default Bays
+    END IF
 END FUNCTION
+
+CALL loadData
+CALL display_menu
+
+END
