@@ -39,16 +39,14 @@ def recordEntry():
   if bay in Bays:
     if Bays[bay]["occupied"]:
         print("Bay is already occupied.")
-        print("Press Enter to return to menu")
-        display_menu()
+   
         
     else:
       car_plate = input("Enter car number plate:")
       Bays[bay]["plate"] = car_plate
       Bays[bay]["occupied"] = True
       print(f"Car with plate {car_plate} has parked in bay {bay}.")
-      print("Press Enter to return to menu")
-      display_menu()
+
 
 #function to remove a car from a bay 
 def removeCar():
@@ -65,8 +63,7 @@ def removeCar():
     if not found:
         print("we could not find your carplate in the system")
     #go back to menu after seeing the message
-    input("Press Enter to return to the menu...")
-    display_menu()
+
 
 def viewStatus():
     for bay in Bays:
@@ -74,8 +71,7 @@ def viewStatus():
             print(f"{bay} is occupied")
         else:
             print(f"bay {bay} is unoccupied")
-    input("Press Enter to return to the menu...")
-    display_menu()
+
         
         
 def calculateTotals():
@@ -87,8 +83,7 @@ def calculateTotals():
     print("Total: 5")
     print(f"occupied: {occupied_bays}")
     print(f"unoccupied: {unoccupied}")
-    input("Press Enter to return to the menu...")
-    display_menu()
+  
 
 
 def saveData():
