@@ -87,3 +87,19 @@ def saveData():
                 f"{bayNum}, {details['plate']}, {details['occupied']}\n"
                 )
     
+def loadData():
+    try:
+        with open("Carpark.txt", "r") as file:
+            for line in file:
+                line = line.strip()
+                bayNum, plate, occupied = line.split(",")
+                bayNum = int(bayNum）
+                if occupied == True:
+                             occupied = True
+                else:
+                    occupied = False
+                Bays[bayNum] = {
+                    "plate": plate,
+                    "occupied": occupied}
+     except FileNotFoundError:
+        pass
