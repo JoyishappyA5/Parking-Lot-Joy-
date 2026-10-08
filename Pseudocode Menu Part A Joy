@@ -8,7 +8,7 @@ FUNCTION display_menu
   WHILE running is True
     DISPLAY "Parking Lot Tracker"
     DISPLAY all the options 1-5
-    action <- int(input("Enter your choice: "))
+    choice <- int(input("Enter your choice: "))
     IF choice is 1
             CALL recordEntry
     ELSE IF choice is 2
