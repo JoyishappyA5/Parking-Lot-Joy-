@@ -29,6 +29,7 @@ def display_menu():
             calculateTotals()
         elif action == 5:
             saveData()
+            # exit()
             running = False
 
 
