@@ -70,6 +70,8 @@ def viewstatus():
             print(f"{bay} is occupied")
         else:
             print(f"bay {bay} is unoccupied")
+    input("Press Enter to return to the menu...")
+    display_menu()
         
         
 def calculateTotals():
@@ -81,6 +83,8 @@ def calculateTotals():
     print("Total: 5")
     print(f"occupied: {occupied_bays}")
     print(f"unoccupied: {unoccupied}")
+    input("Press Enter to return to the menu...")
+    display_menu()
 
 
 def saveData():
