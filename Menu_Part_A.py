@@ -50,7 +50,7 @@ def recordEntry():
 
 #function to remove a car from a bay 
 def removeCar():
-    cp = inpuit("Enter car number plate: ")
+    cp = input("Enter car number plate: ")
     for bay, details in Bays.items():
         if details["plate"] == plate:
             print(f"you parked your car in {bay}")
