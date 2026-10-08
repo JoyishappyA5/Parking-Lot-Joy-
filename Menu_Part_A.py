@@ -10,7 +10,7 @@ Bays = {
 #Menu function
 def display_menu():
     running = True
-#the different choices printed
+    #the different choices printed
     while running:
         print("========================================")
         print("         PARKING LOT TRACKER")
