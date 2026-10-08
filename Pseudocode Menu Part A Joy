@@ -9,9 +9,99 @@ Define Menu:
   print("3. View status of all bays")
   print("4. View occupancy totals")
   print("5. Save Data and Exit")
-  action = int(input("Enter your choice: "))
+  action <- int(input("Enter your choice: "))
   choice <- input(user's choice)
-  got to different choice/activate different function based on the user's choice
+  END FUNCTION
+  #go to different choice/activate different function based on the user's choice
 
 
-  
+
+
+#record entry option function
+define recordEntry:
+  bay <- user's input bay number
+  IF bay is within range of carpark:
+   IF the bay is occupied:
+      print("Bay is already occupied.")
+    else:
+      car_plate <- input("Enter car number plate:")
+      Bays[bay]["plate"] = car_plate
+      Bays[bay]["occupied"] = True
+      print(f"Car with plate {car_plate} has parked in bay {bay}.")
+    END IF
+   END IF
+END FUNCTION
+
+
+#function to remove a car from a bay 
+define removeCar:
+    cp <- input("Enter car number plate: ")
+    FOR bay, details in Bays.items():
+        IF details["plate"] == plate:
+            print(f"you parked your car in {bay}")
+            Bay[bay]["plate"] = ""
+            Bays[bay]["occupied"] = False
+            print("Have a lovely day! Thank you for parking in xx parking")
+        else:
+             print("we could not find your carplate in the system")
+             display_menu()
+        END IF
+    END FOR
+END FUNCTION
+
+define viewstatus:
+    FOR bay in Bays:
+        IF bay is not occupied:
+            print(f"bay {bay} is unoccupied")
+        ELSE:
+            print(f"bay {bay} is occupied")
+        END IF
+    END FOR
+END FUNCTION
+
+        
+        
+def calculateTotals():
+    occupied_bays <- 0
+    FOR bay in Bays:
+        IF bay is occupied:
+            occupied_bays += 1
+        END IF
+    END FOR
+    unoccupied <- 5 - occupied
+    print("Total: 5")
+    print(f"occupied: {occupied_bays}")
+    print(f"unoccupied: {unoccupied}")
+END FUNCTION
+
+
+define saveData:
+    with open("Carpark.txt", "w") as file:
+        FOR bayNum, details in Bays.items():
+            file.write(
+                f"{bayNum}, {details['plate']}, {details['occupied']}\n"
+                )
+        END FOR
+END FUNCTION
+    
+def loadData():
+    try:
+        with open("Carpark.txt", "r") as file:
+            FOR line in file:
+                line <- line.strip()
+                bayNum, plate, occupied = line.split(",")
+                bayNum <- int(bayNum)
+                occupied <- occupied.strip()
+                plate <- plate.strip()
+                IF occupied is "True":
+                    occupied <- True
+                ELSE:
+                    occupied <- False
+                END IF
+                Bays[bayNum] <- {
+                    "plate": plate,
+                    "occupied": occupied}
+            END FOR
+    except FileNotFoundError:
+        pass
+END FUNCTION
