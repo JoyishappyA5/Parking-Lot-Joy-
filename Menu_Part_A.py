@@ -93,7 +93,7 @@ def loadData():
             for line in file:
                 line = line.strip()
                 bayNum, plate, occupied = line.split(",")
-                bayNum = int(bayNum）
+                bayNum = int(bayNum)
                 if occupied == True:
                              occupied = True
                 else:
