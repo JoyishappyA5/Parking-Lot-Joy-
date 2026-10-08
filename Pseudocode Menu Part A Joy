@@ -51,7 +51,7 @@ FUNCTION removeCar
     FOR bay, details in Bays.items()
         IF license plate matches
             DISPLAY f"you parked your car in {bay}"
-            Bay[bay]["plate"] = ""
+            Bays[bay]["plate"] = ""
             SET occupied to False
             SET found to True
             print("Have a lovely day! Thank you for parking in xx parking")
