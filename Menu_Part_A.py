@@ -64,7 +64,7 @@ def removeCar():
             Bays[bay]["plate"] = ""
             Bays[bay]["occupied"] = False
             found = True
-            input("Have a lovely day! Thank you for parking in xx parking")
+            print("Have a lovely day! Thank you for parking in xx parking")
             break
     if not found:
         print("we could not find your carplate in the system")
