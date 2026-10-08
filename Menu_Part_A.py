@@ -9,7 +9,6 @@ Bays = {
 
 #Menu function
 def display_menu():
-  loadData()
 #the different choices printed
   print("Parking Lot Tracker")
   print("1. Entering a bay")
@@ -51,22 +50,24 @@ def recordEntry():
 #function to remove a car from a bay 
 def removeCar():
     cp = input("Enter car number plate: ")
+    found = False
     for bay, details in Bays.items():
-        if details["plate"] == plate:
+        if details["plate"] == cp:
             print(f"you parked your car in {bay}")
-            Bay[bay]["plate"] = ""
+            Bays[bay]["plate"] = ""
             Bays[bay]["occupied"] = False
+            found = True
             input("Have a lovely day! Thank you for parking in xx parking")
-            display_menu()
-        else:
-            print("we could not find your carplate in the system")
-            #go back to menu after seeing the message
-            input("Press Enter to return to the menu...")
-            display_menu()
+            break
+    if not found:
+        print("we could not find your carplate in the system")
+    #go back to menu after seeing the message
+    input("Press Enter to return to the menu...")
+    display_menu()
 
-def viewstatus():
+def viewStatus():
     for bay in Bays:
-        if Bay[bay]["occupied"]:
+        if Bays[bay]["occupied"]:
             print(f"{bay} is occupied")
         else:
             print(f"bay {bay} is unoccupied")
@@ -79,7 +80,7 @@ def calculateTotals():
     for bay in Bays:
         if Bays[bay]["occupied"]:
             occupied_bays += 1
-    unoccupied = 5 - occupied
+    unoccupied = len(Bays) - occupied_bays
     print("Total: 5")
     print(f"occupied: {occupied_bays}")
     print(f"unoccupied: {unoccupied}")
