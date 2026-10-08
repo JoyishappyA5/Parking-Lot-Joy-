@@ -94,7 +94,7 @@ def loadData():
                 line = line.strip()
                 bayNum, plate, occupied = line.split(",")
                 bayNum = int(bayNum)
-                if occupied == True:
+                if occupied == "True":
                              occupied = True
                 else:
                     occupied = False
