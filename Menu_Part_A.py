@@ -12,16 +12,16 @@ def display_menu():
     running = True
 #the different choices printed
     while running:
- print("========================================")
- print("         PARKING LOT TRACKER")
- print("========================================")
+        print("========================================")
+        print("         PARKING LOT TRACKER")
+        print("========================================")
         print("Parking Lot Tracker")
         print("1. Entering a bay")
         print("2. Leaving a bay")
         print("3. View status of all bays")
         print("4. View occupancy totals")
         print("5. Save Data and Exit")
- print("========================================")
+        print("========================================")
         action = int(input("Enter your choice: "))
         if action == 1:
             recordEntry()
