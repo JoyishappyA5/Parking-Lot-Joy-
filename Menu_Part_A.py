@@ -101,5 +101,5 @@ def loadData():
                 Bays[bayNum] = {
                     "plate": plate,
                     "occupied": occupied}
-     except FileNotFoundError:
+    except FileNotFoundError:
         pass
