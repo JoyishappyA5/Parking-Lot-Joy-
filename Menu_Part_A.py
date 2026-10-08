@@ -12,6 +12,9 @@ def display_menu():
     running = True
 #the different choices printed
     while running:
+ print("========================================")
+ print("         PARKING LOT TRACKER")
+ print("========================================")
         print("Parking Lot Tracker")
         print("1. Entering a bay")
         print("2. Leaving a bay")
