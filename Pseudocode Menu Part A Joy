@@ -21,8 +21,8 @@ FUNCTION display_menu
             CALL saveData
             SET running to False
     END IF
-
-    END FUNCTION
+  END WHILE
+END FUNCTION
 
 
 
