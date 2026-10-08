@@ -45,7 +45,7 @@ def recordEntry():
       Bays[bay]["occupied"] = True
       print(f"Car with plate {car_plate} has parked in bay {bay}.")
       print("Press Enter to return to menu")
-        display_menu()
+      display_menu()
 
 #function to remove a car from a bay 
 def removeCar():
