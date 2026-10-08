@@ -72,12 +72,28 @@ def removeCar():
 
 
 def viewStatus():
+    print("========================================")
+    print("CAR PARK STATUS")
+    print("========================================")
     for bay in Bays:
         if Bays[bay]["occupied"]:
-            print(f"{bay} is occupied")
+            status = Bays[bay]["plate"]
+            print("┌───────────┐")
+            print(f"│   BAY {bay}   │")
+            print("│           │")
+            print(f"│{status:^11}│")
+            print("│           │")
+            print("└───────────┘")
         else:
-            print(f"bay {bay} is unoccupied")
-
+            status = "UNOCCUPIED"
+            print("┌───────────┐")
+            print(f"│   BAY {bay}   │")
+            print("│           │")
+            print(f"│{status:^11}│")
+            print("│           │")
+            print("└───────────┘")
+    
+    print("========================================")
         
         
 def calculateTotals():
