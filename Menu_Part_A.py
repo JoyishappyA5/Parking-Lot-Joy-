@@ -21,6 +21,7 @@ def display_menu():
         print("3. View status of all bays")
         print("4. View occupancy totals")
         print("5. Save Data and Exit")
+ print("========================================")
         action = int(input("Enter your choice: "))
         if action == 1:
             recordEntry()
