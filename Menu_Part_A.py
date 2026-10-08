@@ -63,7 +63,7 @@ def viewstatus():
         elif Bays[bay]["occupied"]:
             print(f"bay {bay} is occupied")
     for bay in Bays:
-        if Bay[bay]["occupied"]":
+        if Bay[bay]["occupied"]:
             print(f"{bay} is occupied")
         else:
             print(f"bay {bay} is unoccupied")
