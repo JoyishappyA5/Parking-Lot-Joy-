@@ -38,7 +38,9 @@ FUNCTION recordEntry
       SET bay occupied to True
       DISPLAY f"Car with plate {car_plate} has parked in bay {bay}."
     END IF
-   END IF
+  ELSE
+    DISPLAY "Please enter a valid bay number"
+  END IF
 END FUNCTION
 
 
