@@ -45,7 +45,7 @@ lstBays = [
 def findBay(lstBays, Baynum):
   for bay in lstBays:
     if bay.getBaynumber() == Baynum:
-      return getBayNumber
+      return Baynum
   return None
   
 def displayBay(lstBays):
@@ -56,7 +56,7 @@ def displayBay(lstBays):
       print(f"{bay.getBayNumber()}: {bay.getPlate()}")
 
 def parkVehicle(lstBays, baynum, carplate):
-  if findBay(baynum) != None:
+  if findBay(lstBays, baynum) != None:
     parkCar(carplate)
   else:
     return "Enter a valid Baynumber please"
@@ -82,7 +82,7 @@ def main():
         elif choice == "2":
             carp = input("what's your carplate?")
             bayn = int(input("which bay do you wish to park in?")
-            parkVehicle(bayn, carp)
+            parkVehicle(lstBays, bayn, carp)
             pass
 
         elif choice == "3":
