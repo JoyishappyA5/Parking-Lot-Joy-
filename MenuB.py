@@ -50,14 +50,56 @@ def findBay(lstBays, Baynum):
   
 def displayBay(lstBays):
   for bay in lstBays:
-    if not bay.isoccupied():
-      print(f"{bay.getBaynumber()}: unoccupied")
+    if not bay.isOccupied():
+      print(f"{bay.getBayNumber()}: unoccupied")
     else:
-      print(f"{bay.getBaynumber()}: {bay.getplate()}")
+      print(f"{bay.getBayNumber()}: {bay.getPlate()}")
 
 def parkVehicle(lstBays, baynum, carplate):
-  if findBay(baynum) != none:
+  if findBay(baynum) != None:
     parkCar(carplate)
   else:
     return "Enter a valid Baynumber please"
-  
+
+
+def main():
+    # Create your list of ParkingBay objects
+
+    while True:
+        print("\nParking Lot Tracker")
+        print("1. Display parking bays")
+        print("2. Park a car")
+        print("3. Remove a car")
+        print("4. Save data")
+        print("5. Exit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            displaybay()
+            pass
+
+        elif choice == "2":
+            carp = input("what's your carplate?")
+            bayn = int(input("which bay do you wish to park in?")
+            parkVehicle(bayn, carp)
+            pass
+
+        elif choice == "3":
+            bayn = input("what's your bay number?")
+            removeVehicle()
+            pass
+
+        elif choice == "4":
+              
+            pass
+
+        elif choice == "5":
+            # Save if required, then exit the loop
+            break
+
+        else:
+            print("Invalid choice. Please try again.")
+
+
+main()
