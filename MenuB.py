@@ -1,4 +1,6 @@
+# creating a class for carpark
 class ParkingBay:
+  #Constructor
   def __init__(self, baynum):
     self.__baynum = baynum
     self.__plate = ""
@@ -33,7 +35,9 @@ class ParkingBay:
 
   def getPlate(self):
     return self.__plate
+#End of Class
 
+#List of bays
 lstBays = [
     ParkingBay(1),
     ParkingBay(2),
@@ -42,6 +46,7 @@ lstBays = [
     ParkingBay(5)
 ]
 
+#functions
 def findBay(lstBays, Baynum):
   for bay in lstBays:
     if bay.getBaynumber() == Baynum:
@@ -60,10 +65,17 @@ def parkVehicle(lstBays, baynum, carplate):
     parkCar(carplate)
   else:
     return "Enter a valid Baynumber please"
-
+def removeVehicle(lstBays, baynum, carplate):
+  if findBay(lstBays, baynum) != None:
+    if carplate == baynum.getBayNumber:
+      bay.removeCar()
+      return f"Your car has been removed from bay {baynum}"
+    else:
+      return f"sorry, but your car doesn't seem to be parked at bay {baynum}}"
+  else:
+    return "Enter a valid Baynumber please"
 
 def main():
-    # Create your list of ParkingBay objects
 
     while True:
         print("\nParking Lot Tracker")
