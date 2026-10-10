@@ -61,8 +61,9 @@ def displayBay(lstBays):
       print(f"{bay.getBayNumber()}: {bay.getPlate()}")
 
 def parkVehicle(lstBays, baynum, carplate):
-  if findBay(lstBays, baynum) != None:
-    parkCar(carplate)
+  bay = findBay(lstBays, baynum) 
+  if bay != None:
+    parkCar(bay, carplate)
   else:
     return "Enter a valid Baynumber please"
 def removeVehicle(lstBays, baynum, carplate):
