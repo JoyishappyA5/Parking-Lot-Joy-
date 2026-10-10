@@ -8,7 +8,6 @@ class ParkingBay:
 
   def parkCar(self, plate):
     if not isinstance(plate, str) or not plate.strip():
-      print("Please enter valid carplate")
       return False
 
     if self.__occupied:
