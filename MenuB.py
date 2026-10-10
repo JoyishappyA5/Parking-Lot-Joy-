@@ -92,7 +92,7 @@ def main():
         choice = input("Enter your choice: ")
 
         if choice == "1":
-            displayBay()
+            displayBay(lstBays)
             pass
 
         elif choice == "2":
@@ -101,7 +101,9 @@ def main():
               bayn = int(input("which bay do you wish to park in?"))
             except ValueError:
               print("please enter a valid bay number")
+              pass
             parkVehicle(lstBays, bayn, carp)
+            print(f"You have parked your car with carplate {carp} in bay {bayn}")
             pass
 
         elif choice == "3":
