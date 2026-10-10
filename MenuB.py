@@ -49,8 +49,8 @@ lstBays = [
 #functions
 def findBay(lstBays, Baynum):
   for bay in lstBays:
-    if bay.getBaynumber() == Baynum:
-      return Baynum
+    if bay.getBayNumber() == Baynum:
+      return bay
   return None
   
 def displayBay(lstBays):
