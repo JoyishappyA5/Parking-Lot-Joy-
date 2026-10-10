@@ -5,7 +5,8 @@ class ParkingBay:
     self.__baynum = baynum
     self.__plate = ""
     self.__occupied = False
-
+  
+#Methods for parking/removing car and returning True/False
   def parkCar(self, plate):
     if not isinstance(plate, str) or not plate.strip():
       return False
@@ -26,6 +27,7 @@ class ParkingBay:
       self.__occupied = False
       return True
 
+  #Methods for retrieving informations
   def isOccupied(self):
     return self.__occupied
 
@@ -44,6 +46,7 @@ lstBays = [
     ParkingBay(4),
     ParkingBay(5)
 ]
+
 
 #functions
 def findBay(lstBays, Baynum):
@@ -82,6 +85,7 @@ def removeVehicle(lstBays, baynum, carplate):
   else:
     return "Enter a valid Baynumber please"
 
+#Menu function
 def main():
 
     while True:
