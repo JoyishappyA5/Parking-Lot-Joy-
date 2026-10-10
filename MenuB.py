@@ -78,7 +78,7 @@ def removeVehicle(lstBays, baynum, carplate):
       bayn.removeCar()
       return f"Your car has been removed from bay {baynum}"
     else:
-      return f"sorry, but your car doesn't seem to be parked at bay {baynum}}"
+      return f"sorry, but your car doesn't seem to be parked at bay {baynum}"
   else:
     return "Enter a valid Baynumber please"
 
