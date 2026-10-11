@@ -10,11 +10,11 @@ class ParkingBay:
   def parkCar(self, plate):
     
     if not isinstance(plate, str):
-    return False
-    plate = plate.strip()
+      return False
+      plate = plate.strip()
     
     if not plate:
-    return False
+      return False
   
     if self.__occupied:
       return False
