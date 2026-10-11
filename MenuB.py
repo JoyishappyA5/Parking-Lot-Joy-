@@ -77,7 +77,7 @@ def parkVehicle(lstBays, baynum, carplate):
 def removeVehicle(lstBays, baynum, carplate):
   bayn = findBay(lstBays, baynum)
   if bayn != None:
-    if carplate == bayn.getPlate() and bayn.isOccupied == True:
+    if carplate == bayn.getPlate() and bayn.isOccupied() == True:
       bayn.removeCar()
       return f"Your car has been removed from bay {baynum}"
     else:
@@ -109,13 +109,25 @@ def main():
             except ValueError:
               print("please enter a valid bay number")
               pass
-            parkVehicle(lstBays, bayn, carp)
-            print(f"You have parked your car with carplate {carp} in bay {bayn}")
-            pass
+            parking = parkVehicle(lstBays, bayn, carp)
+            if parking is True:
+              print(f"You have parked your car with carplate {carp} in bay {bayn}")
+              pass
+            else:
+              print("The bay is already occupied or your carplate is invalid, please try again")
+              pass
 
         elif choice == "3":
-            bayn = input("what's your bay number?")
-            removeVehicle()
+            try:
+              bayn = int(input("what's your bay number?"))
+            except ValueError:
+              print("please enter an integer")
+            carp = input("What's your car plate?")
+            removal = removeVehicle(lstBays, bayn, carplate)
+            if removal is True:
+              print(f"you have successfully removed your car with carplate {carp} from bay {bayn}")
+            else:
+              print("please check your bay number and carplate and try again")
             pass
 
         elif choice == "4":
