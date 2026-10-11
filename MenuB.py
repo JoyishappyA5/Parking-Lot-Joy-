@@ -104,7 +104,6 @@ def main():
 
         if choice == "1":
             displayBay(lstBays)
-            pass
 
         elif choice == "2":
             carp = input("what's your carplate?")
