@@ -61,12 +61,12 @@ def recordEntry():
         
     else:
         car_plate = input("Enter car number plate:").strip()
-    if not car_plate:
-        print("Invalid car plate. Please enter a valid car plate.")
-    else:
-        Bays[bay]["plate"] = car_plate
-        Bays[bay]["occupied"] = True
-        print(f"Car with plate {car_plate} has parked in bay {bay}.")
+        if not car_plate:
+            print("Invalid car plate. Please enter a valid car plate.")
+        else:
+            Bays[bay]["plate"] = car_plate
+            Bays[bay]["occupied"] = True
+            print(f"Car with plate {car_plate} has parked in bay {bay}.")
   else:
       print("Please enter a valid bay number")
       
