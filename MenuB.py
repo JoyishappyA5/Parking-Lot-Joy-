@@ -100,11 +100,13 @@ def loadData():
       for line in file:
         bayNum, plate, occupied = line.split(",")
         bayNum = int(bayNum)
+        occupied = occupied.strip()
+        plate = plate.strip()
         if occupied == "True":
           occupied = True
         else:
           occupied = False
-        parkVehicle(lstBay, bayNum, plate)
+        parkVehicle(lstBays, bayNum, plate)
       
   except FileNotFoundError:
     pass  
@@ -112,13 +114,13 @@ def loadData():
 
 def saveData():
   with open("Carpark.txt", "w") as file:
-    for bay in lstBays.items():
+    for bay in lstBays:
       bayn = bay.getBayNumber()
       plate = bay.getPlate()
       occupied = bay.isOccupied()
       file.write(
-        f"{bayn,{plate},{occupied}\n"
-                )
+        f"{bayn,{plate},{occupied}\n"}
+      )
   
 #Menu function
 def main():
