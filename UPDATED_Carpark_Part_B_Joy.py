@@ -90,6 +90,7 @@ lstBays = [
 # Inputs: lstBays (list of ParkingBay objects), Baynum (integer)
 # Outputs: Matching ParkingBay object, or None if no matching bay exists.
 # Data types: list, ParkingBay, integer, NoneTypedef findBay(lstBays, Baynum):
+def findBay(lstBays, Baynum):
   for bay in lstBays:
     if bay.getBayNumber() == Baynum:
       return bay
