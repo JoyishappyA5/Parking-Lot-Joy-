@@ -136,7 +136,7 @@ def main():
         print("1. Display parking bays")
         print("2. Park a car")
         print("3. Remove a car")
-        print("4. Save data")
+        print("4. Occupancy state")
         print("5. Save and Exit")
 
         choice = input("Enter your choice: ")
@@ -165,8 +165,14 @@ def main():
             
 
         elif choice == "4":
-          saveData()
-          
+          occupied_bays = 0
+          for bay in lstBays:
+            if bay.isOccupied():
+              occupied_bays += 1
+          unoccupied_bays = len(lstBays) - occupied_bays
+          print(f"Total Bays: {len(lstBays)}")    
+          print(f"Occupied Bays: {occupied_bays}")
+          print(f"Unoccupied Bays: {unoccupied_bays}")
 
         elif choice == "5":
           saveData()
