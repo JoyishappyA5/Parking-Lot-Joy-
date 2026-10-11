@@ -89,6 +89,11 @@ def removeVehicle(lstBays, baynum, carplate):
   else:
     return "Enter a valid Baynumber please"
 
+#Loading and Saving Funtioons
+def loadData():
+
+def saveData():
+  
 #Menu function
 def main():
 
