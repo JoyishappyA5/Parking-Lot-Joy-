@@ -109,12 +109,7 @@ def main():
             except ValueError:
               print("please enter a valid bay number")
               pass
-            parking = parkVehicle(lstBays, bayn, carp)
-            if parking is True:
-              print(f"You have parked your car with carplate {carp} in bay {bayn}")
-              pass
-            else:
-              print("The bay is already occupied or your carplate is invalid, please try again")
+            parkVehicle(lstBays, bayn, carp)
               pass
 
         elif choice == "3":
@@ -123,11 +118,7 @@ def main():
             except ValueError:
               print("please enter an integer")
             carp = input("What's your car plate?")
-            removal = removeVehicle(lstBays, bayn, carplate)
-            if removal is True:
-              print(f"you have successfully removed your car with carplate {carp} from bay {bayn}")
-            else:
-              print("please check your bay number and carplate and try again")
+            removeVehicle(lstBays, bayn, carplate)
             pass
 
         elif choice == "4":
