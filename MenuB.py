@@ -99,7 +99,7 @@ def loadData():
   try:
     with open("Carpark.txt", "r") as file:
       for line in file:
-        bayNum, plate, occupied = line.split(",")
+        bayNum, plate, occupied = line.strip().split(",")
         bayNum = int(bayNum)
         occupied = occupied.strip()
         plate = plate.strip()
