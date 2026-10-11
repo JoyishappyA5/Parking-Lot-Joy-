@@ -1,12 +1,25 @@
-# creating a class for carpark
+# File: parking_lot_tracker_part_b.py
+# Description: Tracks parking-bay occupancy using Classes - Object Oriented Coding
+# Author: Joy Gong
+# Date created: 11/16/2026
+
+# Ckass Parking Bay
 class ParkingBay:
   #Constructor
+  # Purpose: Initialise parking bay object with a bay number, empty licence plate and an unoccupied state
+  # Inputs: baynum (integer)
+  # Outputs: initialised objects
+  # Data types: integer, string, boolean value
   def __init__(self, baynum):
     self.__baynum = baynum
     self.__plate = ""
     self.__occupied = False
   
-#Methods for parking/removing car and returning True/False
+#Method: parkCar()
+#Purpose: Occupy a free parking bay with a validated licence plate.
+#Inputs: plate (string)
+#Outputs: Boolean success status (True if successful, False otherwise)
+#Data types: string, bool
   def parkCar(self, plate):
     
     if not isinstance(plate, str):
@@ -24,7 +37,11 @@ class ParkingBay:
       self.__occupied = True
       return True
     
-
+   # Method: removeCar()
+   # Purpose: Remove a vehicle from an occupied bay and reset its licence plate and occupancy state.
+   # Inputs: None
+   # Outputs: Boolean success status (True if successful, False if the bay is empty)
+   # Data types: bool, string
   def removeCar(self):
     if not self.__occupied:
       return False
@@ -33,13 +50,27 @@ class ParkingBay:
       self.__occupied = False
       return True
 
-  #Methods for retrieving informations
+    # Method: isOccupied()
+    # Purpose: Retrieve whether the parking bay is currently occupied.
+    # Inputs: None
+    # Outputs: Occupancy state (True if occupied, False otherwise)
+    # Data types: bool
   def isOccupied(self):
     return self.__occupied
-
+    
+    # Method: getBayNumber()
+    # Purpose: Retrieve the number identifying the parking bay.
+    # Inputs: None
+    # Outputs: Bay number (integer)
+    # Data types: integer
   def getBayNumber(self):
     return self.__baynum
 
+    # Method: getPlate()
+    # Purpose: Retrieve the licence plate stored in the parking bay.
+    # Inputs: None
+    # Outputs: Licence plate (string; empty string if the bay is unoccupied)
+    # Data types: string
   def getPlate(self):
     return self.__plate
 #End of Class
@@ -54,13 +85,21 @@ lstBays = [
 ]
 
 
-#functions
-def findBay(lstBays, Baynum):
+# Function: findBay()
+# Purpose: Find and return the parking bay object matching the specified bay number.
+# Inputs: lstBays (list of ParkingBay objects), Baynum (integer)
+# Outputs: Matching ParkingBay object, or None if no matching bay exists.
+# Data types: list, ParkingBay, integer, NoneTypedef findBay(lstBays, Baynum):
   for bay in lstBays:
     if bay.getBayNumber() == Baynum:
       return bay
   return None
-  
+
+# Function: displayBay()
+# Purpose: Display each parking bay's number, occupancy status and licence plate if occupied.
+# Inputs: lstBays (list of ParkingBay objects)
+# Outputs: Printed parking bay information (no explicit return value)
+# Data types: list, ParkingBay, string, integer, bool, NoneType
 def displayBay(lstBays):
   for bay in lstBays:
     if not bay.isOccupied():
@@ -68,6 +107,11 @@ def displayBay(lstBays):
     else:
       print(f"{bay.getBayNumber()}: {bay.getPlate()}")
 
+# Function: parkVehicle() 
+# Purpose: Park a vehicle in the specified bay and return an appropriate success or error message. 
+# Inputs: lstBays (list of ParkingBay objects), baynum (integer), carplate (string) 
+# Outputs: Success message or error message (string) 
+# Data types: list, ParkingBay, integer, string, bool
 def parkVehicle(lstBays, baynum, carplate):
   carplate = carplate.strip()
   bay = findBay(lstBays, baynum) 
@@ -80,7 +124,11 @@ def parkVehicle(lstBays, baynum, carplate):
     else:
       return "Sorry, but the bay is already occupied or your carplate is invalid"
 
-
+# Function: removeVehicle()
+# Purpose: Remove a vehicle from the specified bay after checking that the bay exists, is occupied and contains the matching plate.
+# Inputs: lstBays (list of ParkingBay objects), baynum (integer), carplate (string)
+# Outputs: Success message or error message (string)
+# Data types: list, ParkingBay, integer, string, bool
 def removeVehicle(lstBays, baynum, carplate):
   bayn = findBay(lstBays, baynum)
   carplate = carplate.strip()
@@ -96,7 +144,11 @@ def removeVehicle(lstBays, baynum, carplate):
   else:
     return "Please Enter a valid Baynumber"
 
-#Loading and Saving Funtioons
+# Function: loadData()
+# Purpose: Load and validate saved parking data from Carpark.txt and restore the state of occupied parking bay objects.
+# Inputs: Carpark.txt file
+# Outputs: Updated parking bay objects; handles a missing file without crashing
+# Data types: file, string, integer, bool, ParkingBay, list, NoneType
 def loadData():
   try:
     with open("Carpark.txt", "r") as file:
@@ -134,7 +186,11 @@ def loadData():
   except FileNotFoundError:
     pass  
     
-
+# Function: saveData()
+# Purpose: Save each parking bay's number, licence plate and occupancy state to Carpark.txt.
+# Inputs: Current list of ParkingBay objects (lstBays, accessed globally)
+# Outputs: Updated Carpark.txt file; no explicit return value
+# Data types: list, ParkingBay, integer, string, bool, file, NoneType
 def saveData():
   with open("Carpark.txt", "w") as file:
     for bay in lstBays:
@@ -145,7 +201,11 @@ def saveData():
         f"{bayn},{plate},{occupied}\n"
       )
   
-#Menu function
+# Function: main()
+# Purpose: Display the menu and coordinate parking operations, vehicle removal, status display, occupancy totals and program exit.
+# Inputs: User's menu choice and operation-specific input
+# Outputs: Menu, prompts, status information, messages and occupancy totals
+# Data types: string, integer, list, ParkingBay, bool, NoneType
 def main():
 
     while True:
