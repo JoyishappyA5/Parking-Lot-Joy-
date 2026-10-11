@@ -65,19 +65,19 @@ def displayBay(lstBays):
 def parkVehicle(lstBays, baynum, carplate):
   bay = findBay(lstBays, baynum) 
   if bay is None:
-    return False
+    return "Please enter a valid bay number"
   else:
     success = bay.parkCar(carplate)
     if success is True:
       return f"you have successfuly parked your car with carplate {carplate} in bay {baynum}"
     else:
-      return False
+      return "Sorry, but the bay is already occupied or your carplate is invalid"
 
 
 def removeVehicle(lstBays, baynum, carplate):
   bayn = findBay(lstBays, baynum)
   if bayn != None:
-    if carplate == bayn.getPlate() and bayn.isOccupied() == True:
+    if carplate == bayn.getPlate() and bayn.isOccupied():
       bayn.removeCar()
       return f"Your car has been removed from bay {baynum}"
     else:
@@ -108,17 +108,18 @@ def main():
               bayn = int(input("which bay do you wish to park in?"))
             except ValueError:
               print("please enter a valid bay number")
-              pass
-            parkVehicle(lstBays, bayn, carp)
-              pass
+              continue
+            print(parkVehicle(lstBays, bayn, carp))
+            pass
 
         elif choice == "3":
             try:
               bayn = int(input("what's your bay number?"))
             except ValueError:
               print("please enter an integer")
+              continue
             carp = input("What's your car plate?")
-            removeVehicle(lstBays, bayn, carplate)
+            print(removeVehicle(lstBays, bayn, carp))
             pass
 
         elif choice == "4":
