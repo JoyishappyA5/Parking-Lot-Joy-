@@ -76,7 +76,7 @@ def parkVehicle(lstBays, baynum, carplate):
   else:
     success = bay.parkCar(carplate)
     if success is True:
-      return f"Successfuly parked car with carplate {carplate} in bay {baynum}"
+      return f"Successfully parked car with carplate {carplate} in bay {baynum}"
     else:
       return "Sorry, but the bay is already occupied or your carplate is invalid"
 
@@ -100,19 +100,36 @@ def removeVehicle(lstBays, baynum, carplate):
 def loadData():
   try:
     with open("Carpark.txt", "r") as file:
+      #for each line in the saved file
       for line in file:
-        bayNum, plate, occupied = line.strip().split(",")
-        bayNum = int(bayNum)
+        #removal of space and comma
+        parts = line.strip().split(",")
+        #check if there's 3 parts to it so error file doesn't gets recorded
+        if len(parts) != 3:
+          continue
+        bayNum, plate, occupied = parts
+        
+         #checks if bay is integer
+        try:
+          bayNum = int(bayNum)
+        except ValueError:
+          continue
+          
+        #check if bay ecist
+        bay = findBay(lstBays, bayNum)
+        if bay is None:
+          continue
+
+        #in case there's space after the comma has been removed for the occupation state and plate
         occupied = occupied.strip()
         plate = plate.strip()
-        if occupied == "True":
-          occupied = True
-        else:
-          occupied = False
-        if occupied is True:
-          bay = findBay(lstBays, bayNum)
-          if bay is not None:
-            bay.parkCar(plate)
+        if occupied not in ("True", "False"):
+          continue
+        occupied = (occupied == "True")
+
+        #if occupied data is recorded, if not data is left blank
+        if occupied:
+          bay.parkCar(plate)
       
   except FileNotFoundError:
     pass  
