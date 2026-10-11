@@ -150,7 +150,7 @@ def main():
               print("please enter a valid bay number")
               continue
             print(parkVehicle(lstBays, bayn, carp))
-            pass
+            
 
         elif choice == "3":
             try:
@@ -160,11 +160,11 @@ def main():
               continue
             carp = input("What's your car plate?")
             print(removeVehicle(lstBays, bayn, carp))
-            pass
+            
 
         elif choice == "4":
           saveData()
-          pass
+          
 
         elif choice == "5":
             break
