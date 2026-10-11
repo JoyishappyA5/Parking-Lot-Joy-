@@ -95,8 +95,20 @@ def removeVehicle(lstBays, baynum, carplate):
 
 #Loading and Saving Funtioons
 def loadData():
+  with open("Carpark.txt", "w") as file:
+    for bay in lstBays：
+    
+    
 
 def saveData():
+  with open("Carpark.txt", "w") as file:
+    for bay in lstBays.items():
+      bayn = bay.getBayNumber()
+      plate = bay.getPlate()
+      occupied = bay.isOccupied()
+      file.write(
+        f"{bayN}, {plate}, {occupied}\n"
+                )
   
 #Menu function
 def main():
