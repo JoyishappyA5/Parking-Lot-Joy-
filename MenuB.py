@@ -8,10 +8,14 @@ class ParkingBay:
   
 #Methods for parking/removing car and returning True/False
   def parkCar(self, plate):
+    
+    if not isinstance(plate, str):
+    return False
     plate = plate.strip()
-    if not isinstance(plate, str) or not plate.strip():
-      return False
-
+    
+    if not plate:
+    return False
+  
     if self.__occupied:
       return False
     else:
