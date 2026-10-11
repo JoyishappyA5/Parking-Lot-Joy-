@@ -135,7 +135,7 @@ def main():
         print("2. Park a car")
         print("3. Remove a car")
         print("4. Save data")
-        print("5. Exit")
+        print("5. Save and Exit")
 
         choice = input("Enter your choice: ")
 
@@ -167,7 +167,8 @@ def main():
           
 
         elif choice == "5":
-            break
+          saveData()
+          break
 
         else:
             print("Invalid choice. Please try again.")
