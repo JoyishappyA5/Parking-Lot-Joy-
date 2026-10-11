@@ -11,7 +11,8 @@ class ParkingBay:
     
     if not isinstance(plate, str):
       return False
-      plate = plate.strip()
+    
+    plate = plate.strip()
     
     if not plate:
       return False
