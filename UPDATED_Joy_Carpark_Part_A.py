@@ -60,7 +60,7 @@ def recordEntry():
    
         
     else:
-    car_plate = input("Enter car number plate:").strip()
+        car_plate = input("Enter car number plate:").strip()
     if not car_plate:
         print("Invalid car plate. Please enter a valid car plate.")
     else:
