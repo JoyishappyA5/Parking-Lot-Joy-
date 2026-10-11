@@ -6,18 +6,31 @@ START
       self.__baynum = baynum
       self.__plate = ""
       self.__occupied = False
-    END CONSTRCUTOR
+    END CONSTRUCTOR
 
   #Methods 
     DEFINE parkCar(self, plate)
-      CHECK IF a plate is string and is not blank
-      CHECK IF the bay is occupied
-      "PARK" the car through changing occupied state to True, record carplate
+      IF plate is not a string OR plate is blank
+        RETURN FALSE
+      END IF
+
+      IF bay is occupied
+        RETURN FALSE
+      ELSE
+        STORE plate
+        SET occupied to TRUE
+        RETURN TRUE
+      END IF
     END method
 
     DEFINE removeCar(self)
-      CHECK if the bay is occupied 
-      "REMOVE" car from bay, changing occupied state to False, delete recorded carplate
+      IF bay is empty
+        RETURN False
+      ELSE
+        SET plate to empty string
+        SET occupied to False
+        RETURN True
+      END IF
       END method
 
     DEFINE isOccupied(self)
@@ -94,7 +107,24 @@ DEFINE loadData
   TRY
     OPEN "Carpark.txt" for reading
       FOR line in file
-        REMOVE space and comma
+        SPLIT line at each comma into separate fields
+
+        IF number of fields is not 3
+          SKIP to next line
+        END IF
+
+        CONVERT bayNum to integer
+        IF conversion fails
+          SKIP to next line
+        END IF
+
+        FIND bay using findBay()
+
+        IF bay does not exist
+          SKIP to next line
+        END IF
+
+        REMOVE leading and trailing whitespace from plate and occupied
         CHECK if there's 3 parts to it so error file doesn't gets recorded
         RECORD values of bayNum, plate, occupied 
         
@@ -158,7 +188,7 @@ DEFINE main
            ASK user for carplate
             print messages returned by removeVehicle(lstBays, bayn, carp)
           
-        ELSE IF == "4"
+        ELSE IF is "4"
           occupied_bays <- 0
           FOR bay in lstBays
             IF bay.isOccupied()
@@ -167,7 +197,7 @@ DEFINE main
           END FOR
           CALCULATE and PRINT totals
 
-        ELSE IF choice == "5"
+        ELSE IF choice is "5"
           saveData()
           break
 
