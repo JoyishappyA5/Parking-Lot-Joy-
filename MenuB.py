@@ -149,6 +149,7 @@ def saveData():
 def main():
 
     while True:
+        print("")
         print("========================================")
         print("         PARKING LOT TRACKER")
         print("========================================")
@@ -158,7 +159,7 @@ def main():
         print("4. Occupancy state")
         print("5. Save and Exit")
         choice = input("Enter your choice: ")
-        print()
+        print("")
 
         if choice == "1":
             displayBay(lstBays)
