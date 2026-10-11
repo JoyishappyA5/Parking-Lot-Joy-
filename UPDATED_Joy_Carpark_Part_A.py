@@ -1,3 +1,8 @@
+# File: parking_lot_tracker_part_a.py
+# Description: Tracks parking-bay occupancy using a dictionary of dictionaries.
+# Author: Joy
+# Date created: 08/10/26
+
 #Dictionary of the bays and their state
 Bays = {
     1: {"plate": "", "occupied": False},
@@ -7,7 +12,11 @@ Bays = {
     5: {"plate": "", "occupied": False}
 }
 
-#Menu function
+# Function: display_menu()
+# Purpose: Display the menu and allow the user to select a parking operation until they choose to save and exit.
+# Inputs: User's menu choice (integer)
+# Outputs: Menu options, prompts and results of selected operations; no explicit return value.
+# Data types: bool, int, NoneType
 def display_menu():
     running = True
     #the different choices printed
@@ -38,7 +47,11 @@ def display_menu():
 
 
 
-#record entry option function
+# Function: recordEntry()
+# Purpose: Park a car in a specified bay if the bay number is valid and the bay is unoccupied.
+# Inputs: Bay number (integer), car plate (string)
+# Outputs: Confirmation message or error message; updates the corresponding bay's plate and occupancy state.
+# Data types: int, string, bool, dict, NoneType
 def recordEntry():
   bay = int(input("Enter bay number (1-5):"))
   if bay in Bays:
@@ -53,8 +66,12 @@ def recordEntry():
       print(f"Car with plate {car_plate} has parked in bay {bay}.")
   else:
       print("Please enter a valid bay number")
-
-#function to remove a car from a bay 
+      
+# Function: removeCar()
+# Purpose: Find a car by its registration plate and remove it from the parking bay if it exists in the system.
+# Inputs: Car registration plate (string)
+# Outputs: Removal confirmation or error message; updates the bay's plate and occupancy state when removal succeeds.
+# Data types: string, bool, int, dict, NoneType
 def removeCar():
     cp = input("Enter car number plate: ")
     found = False
@@ -70,7 +87,11 @@ def removeCar():
         print("we could not find your carplate in the system")
     #go back to menu after seeing the message
 
-
+# Function: viewStatus()
+# Purpose: Display the status of every parking bay, including its bay number and registration plate if occupied.
+# Inputs: None (uses the global Bays dictionary)
+# Outputs: Formatted parking bay status display; no explicit return value.
+# Data types: dict, int, string, bool, NoneType
 def viewStatus():
     print("========================================")
     print("CAR PARK STATUS")
@@ -95,7 +116,11 @@ def viewStatus():
     
     print("========================================")
         
-        
+# Function: calculateTotals()
+# Purpose: Calculate and display the total number of bays, occupied bays and unoccupied bays.
+# Inputs: None (uses the global Bays dictionary)
+# Outputs: Printed occupancy totals; no explicit return value.
+# Data types: int, dict, bool, NoneType       
 def calculateTotals():
     occupied_bays = 0
     for bay in Bays:
@@ -107,14 +132,23 @@ def calculateTotals():
     print(f"unoccupied: {unoccupied}")
   
 
-
+# Function: saveData()
+# Purpose: Save each parking bay's number, registration plate and occupancy state to Carpark.txt.
+# Inputs: None (uses the global Bays dictionary)
+# Outputs: Updated Carpark.txt file; no explicit return value.
+# Data types: dict, int, string, bool, file, NoneType
 def saveData():
     with open("Carpark.txt", "w") as file:
         for bayNum, details in Bays.items():
             file.write(
                 f"{bayNum}, {details['plate']}, {details['occupied']}\n"
                 )
-    
+
+# Function: loadData()
+# Purpose: Read saved parking information from Carpark.txt and restore the bay data in the Bays dictionary.
+# Inputs: Carpark.txt file
+# Outputs: Updated Bays dictionary; handles a missing file without terminating the program.
+# Data types: file, string, int, bool, dict, NoneType
 def loadData():
     try:
         with open("Carpark.txt", "r") as file:
