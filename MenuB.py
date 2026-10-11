@@ -79,8 +79,11 @@ def removeVehicle(lstBays, baynum, carplate):
   bayn = findBay(lstBays, baynum)
   if bayn != None:
     if carplate == bayn.getPlate() and bayn.isOccupied():
-      bayn.removeCar()
-      return f"Your car has been removed from bay {baynum}"
+      removal = bayn.removeCar()
+      if removal is True:
+        return f"Your car has been removed from bay {baynum}"
+      else:
+        return "please check your information and try again"
     else:
       return f"sorry, but your car doesn't seem to be parked at bay {baynum}"
   else:
