@@ -149,22 +149,24 @@ def saveData():
 def main():
 
     while True:
-        print("\nParking Lot Tracker")
+        print("========================================")
+        print("         PARKING LOT TRACKER")
+        print("========================================")
         print("1. Display parking bays")
         print("2. Park a car")
         print("3. Remove a car")
         print("4. Occupancy state")
         print("5. Save and Exit")
-
         choice = input("Enter your choice: ")
+        print()
 
         if choice == "1":
             displayBay(lstBays)
 
         elif choice == "2":
-            carp = input("what's your carplate?")
+            carp = input("what's your carplate: ")
             try:
-              bayn = int(input("which bay do you wish to park in?"))
+              bayn = int(input("which bay do you wish to park in: "))
             except ValueError:
               print("please enter a valid bay number")
               continue
@@ -173,11 +175,11 @@ def main():
 
         elif choice == "3":
             try:
-              bayn = int(input("what's your bay number?"))
+              bayn = int(input("what's your bay number: "))
             except ValueError:
               print("Please enter an integer")
               continue
-            carp = input("What's your car plate?")
+            carp = input("What's your car plate: ")
             print(removeVehicle(lstBays, bayn, carp))
             
 
