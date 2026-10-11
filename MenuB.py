@@ -95,9 +95,19 @@ def removeVehicle(lstBays, baynum, carplate):
 
 #Loading and Saving Funtioons
 def loadData():
-  with open("Carpark.txt", "w") as file:
-    for bay in lstBays：
-    
+  try:
+    with open("Carpark.txt", "r") as file:
+      for line in file:
+        bayNum, plate, occupied = line.split(",")
+        bayNum = int(bayNum)
+        if occupied == "True":
+          occupied = True
+        else:
+          occupied = False
+        parkVehicle(lstBay, bayNum, plate)
+      
+  except FileNotFoundError:
+    pass  
     
 
 def saveData():
