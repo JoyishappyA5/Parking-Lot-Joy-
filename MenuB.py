@@ -106,7 +106,10 @@ def loadData():
           occupied = True
         else:
           occupied = False
-        parkVehicle(lstBays, bayNum, plate)
+        if occupied is True:
+          bay = findBay(lstBays, bayNum)
+          if bay is not None:
+            bay.parkCar(plate)
       
   except FileNotFoundError:
     pass  
@@ -159,15 +162,14 @@ def main():
             pass
 
         elif choice == "4":
-              
-            pass
+          saveData()
+          pass
 
         elif choice == "5":
-            # Save if required, then exit the loop
             break
 
         else:
             print("Invalid choice. Please try again.")
 
-
+loadData()
 main()
