@@ -1,1 +1,181 @@
+START
+  CLASS ParkingBay
+    #Constructor (defining bays -> baynumber, carplate, occupied state)
+    
+    DEFINE __init__(self, baynum):
+      self.__baynum = baynum
+      self.__plate = ""
+      self.__occupied = False
+    END CONSTRCUTOR
 
+  #Methods 
+    DEFINE parkCar(self, plate)
+      CHECK IF a plate is string and is not blank
+      CHECK IF the bay is occupied
+      "PARK" the car through changing occupied state to True, record carplate
+    END method
+
+    DEFINE removeCar(self)
+      CHECK if the bay is occupied 
+      "REMOVE" car from bay, changing occupied state to False, delete recorded carplate
+      END method
+
+    DEFINE isOccupied(self)
+      return self.__occupied
+    END method
+
+    DEFINE getBayNumber(self)
+      return self.__baynum
+    END method
+
+    DEFINE getPlate(self)
+      return self.__plate
+    END method
+#END CLASS    
+
+CONSTRUCT a list of bays using constructor (e.g. |ParkingBay(1)|)
+
+DEFINE findBay(lstBays, Baynum)
+  FOR bay in lstBays:
+    IF bay.getBayNumber() == Baynum
+      return bay
+    END IF
+  END FOR
+  return None
+END FUNCTION
+  
+DEFINE displayBay(lstBays)
+  FOR bay in lstBays
+    IF bay is unoccupied
+      PRINt "bay _: unoccupied"
+    ELSE
+      PRINT "bay _: (plate)"
+    END IF
+  END FOR
+END FUNCTION
+
+DEFINE parkVehicle(lstBays, baynum, carplate)
+  REMOVE space in the input carplate
+  bay <- findBay(lstBays, baynum) 
+  IF bay returns None
+    RETURN "Please enter a valid bay number"
+  ELSE
+    success <- bay.parkCar(carplate)
+    IF success
+      return success message
+    ELSE:
+      return error message
+    END IF
+  END IF
+END FUNCTION
+
+
+DEF removeVehicle(lstBays, baynum, carplate)
+  bayn <- findBay(lstBays, baynum)
+  REMOVE whitespace from carplate input
+  IF bayn doesn't return None
+    IF carplate input matches carplate stored and bay is occupied:
+      removal <- bayn.removeCar()
+      IF removal is True
+        RETURN success message
+      ELSE
+        RETURN Error message
+      END IF
+    ELSE
+      RETURN error message
+    END IF
+  ELSE
+    RETURN error message
+  END IF
+END FUNCTION
+
+
+DEFINE loadData
+  TRY
+    OPEN "Carpark.txt" for reading
+      FOR line in file
+        REMOVE space and comma
+        CHECK if there's 3 parts to it so error file doesn't gets recorded
+        RECORD values of bayNum, plate, occupied 
+        
+        CHECK if bay is integer
+        CHECK if bay exist
+
+        REMOVE space in data retrieved
+
+        IF occupied not in ("True", "False")
+          CONTINUE
+        occupied <- (occupied == "True")
+        END IF
+        
+        IF occupied
+          bay.parkCar(plate)
+        END IF
+      
+  EXCEPT FileNotFoundError
+    PASS  
+END FUNCTION
+    
+
+DEFINE saveData
+  OPEN "Carpark.txt" for writing
+    FOR bay in lstBays
+      write to file in form: baynumber, carplate, occupied state
+    END FOR
+END FUNCTION
+
+
+#Menu function
+DEFINE main
+
+    WHILE True
+        DISPLAY HEADING and Options
+        1. Display parking bays
+        2. Park a car
+        3. Remove a car
+        4. Occupancy state
+        5. Save and Exit
+        choice <- input("Enter your choice: ")
+
+        IF choice is "1"
+            displayBay(lstBays)
+
+        ELSE IF choice is "2"
+            ASK user for carplate
+            TRY
+              ASK user for bay number
+            EXCEPT ValueError
+              PRINT "please enter a valid bay number"
+              CONTINUE
+            PRINT messages returned by parkVehicle(lstBays, bayn, carp)             
+
+        ELSE IF is "3"
+            TRY
+              ASK user for bay parked in
+            EXCEPT ValueError
+              PRINT "Please enter an integer"
+              CONTINUE
+           ASK user for carplate
+            print messages returned by removeVehicle(lstBays, bayn, carp)
+          
+        ELSE IF == "4"
+          occupied_bays <- 0
+          FOR bay in lstBays
+            IF bay.isOccupied()
+              occupied_bays <- occupied_bays + 1
+            END IF
+          END FOR
+          CALCULATE and PRINT totals
+
+        ELSE IF choice == "5"
+          saveData()
+          break
+
+        ELSE:
+            print "Invalid choice. Please try again."
+        END IF
+    END WHILE
+END FUNCTION
+
+loadData()
+main()
