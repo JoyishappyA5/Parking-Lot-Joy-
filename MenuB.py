@@ -119,7 +119,7 @@ def saveData():
       plate = bay.getPlate()
       occupied = bay.isOccupied()
       file.write(
-        f"{bayn,{plate},{occupied}\n"}
+        f"{bayn},{plate},{occupied}\n"
       )
   
 #Menu function
